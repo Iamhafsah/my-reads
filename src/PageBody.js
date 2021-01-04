@@ -2,13 +2,13 @@ import React, {Component} from 'react'
 import BookSection from './BookSection.js'
 
 
-
 class PageBody extends Component {
   render(){
     const bookList = this.props.bookList
     const currentlyReading = bookList.filter(book => book.shelf === 'currentlyReading');
     const wantToRead = bookList.filter(book => book.shelf === 'wantToRead');
     const read = bookList.filter(book => book.shelf === 'read');
+    
 
     return (
         <div className="list-books">
@@ -17,6 +17,7 @@ class PageBody extends Component {
         </div>
 
         <div className='list-books-content'>
+
            <BookSection 
             shelfName='Currently Reading' 
             books={currentlyReading}
@@ -34,6 +35,7 @@ class PageBody extends Component {
             books={read}
             moveBook={this.props.moveBook}
             />
+            
         </div>
       </div>
     )
