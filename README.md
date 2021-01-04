@@ -6,7 +6,7 @@ If the book term which you searched for does not show up, feel free to go throug
 
 
  
-To start developing:
+To get started with it:
 
 run npm install to install the dependencies.
 
