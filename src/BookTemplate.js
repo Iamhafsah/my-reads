@@ -1,10 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-class Book extends Component {
+const Book = ({book, title, authors, moveBook}) => {
     
-  render(){
-    const {book, title, authors, moveBook} = this.props
-
     return (
         <div>
             <li>
@@ -12,12 +9,12 @@ class Book extends Component {
             <div className="book-top">
             <div className="book-cover" 
             style={{ width: 128, height: 192, 
-            backgroundImage: `url(${book.imageLinks.smallThumbnail ?
+            backgroundImage: `url(${book.imageLinks ?
             book.imageLinks.smallThumbnail : ''})`}}>
             </div>
 
             <div className="book-shelf-changer">
-            <select value={book.shelf} onChange={e => moveBook(book , e.target.value)}>
+            <select value={book.shelf ? book.shelf : (book.shelf = 'none')} onChange={e => moveBook(book , e.target.value)}>
             <option value="move" disabled>Move to...</option>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>
@@ -28,12 +25,11 @@ class Book extends Component {
             </div>
 
             <div className="book-title">{title}</div>
-            <div className="book-authors">{authors}</div>
+            <div className="book-authors">{authors && authors.join(', ')} </div>
             </div>
             </li>
 
         </div>
     )}
-}
 
 export default Book

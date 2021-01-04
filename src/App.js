@@ -10,7 +10,6 @@ import './App.css'
 class BooksApp extends React.Component {
   state = {
     bookList: [],
-    searchQuery: ''
   }
 
 // Function to get all books
@@ -33,21 +32,12 @@ class BooksApp extends React.Component {
         }return item
       })
     })) 
+    BooksAPI.getAll().then((bookList)=>{
+      this.setState({bookList})
+    })
    })
   }
 
-
-// Search function: To search for books from the search input
- search = (query) =>{
-  BooksAPI.search(query)
-   .then((books) => {
-       if(query !== ''){
-          this.setState({bookList: books})
-         }else{
-          this.setState({searchQuery: '', bookList: [] })
-        }        
-    })
-  }
 
 // This function takes in the search query and calls the search function
   trimQuery = (query) => {
@@ -60,23 +50,19 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route exact path='/'
-        render={()=>(
+        <Route exact path='/' >
           <PageBody
-          bookList={this.state.bookList}
-          moveBook={this.moveBook}
+            bookList={this.state.bookList}
+            moveBook={this.moveBook}
           />
-        )} />
+        </Route>
         
-        <Route  path='/search'
-        render={()=>(
+        <Route  path='/search' >
           <SearchPage 
-          moveBook={this.moveBook}
-          bookList={this.state.bookList}
-          searchQuery={this.state.searchQuery}
-          trimQuery={this.trimQuery}
+            moveBook={this.moveBook}
+            bookList={this.state.bookList}
           />
-        )} />
+        </Route>
       </div>
     )
   }
