@@ -2,7 +2,7 @@ import React from 'react'
 import Book from './Book.js'
 import OpenSearchBtn from  './OpenSearchBtn'
 
-
+// This is where the books are stored. This section represents a book shelf.
 const BookSection = (props) => {
     return (
         <div>

@@ -13,6 +13,7 @@ class BooksApp extends React.Component {
     searchQuery: ''
   }
 
+// Function to get all books
   componentDidMount(){
     BooksAPI.getAll()
     .then((bookList) => {
@@ -22,6 +23,7 @@ class BooksApp extends React.Component {
     })
   }
 
+// Function to move book from one shelf to another
   moveBook = (book, shelf) =>{
    BooksAPI.update(book, shelf).then(() =>{
      this.setState((prevState)=>({
@@ -35,6 +37,7 @@ class BooksApp extends React.Component {
   }
 
 
+// Search function: To search for books from the search input
  search = (query) =>{
   BooksAPI.search(query)
    .then((books) => {
@@ -46,7 +49,7 @@ class BooksApp extends React.Component {
     })
   }
 
-
+// This function takes in the search query and calls the search function
   trimQuery = (query) => {
   if (query) {
       this.setState({ searchQuery: query })}

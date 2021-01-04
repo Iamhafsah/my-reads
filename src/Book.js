@@ -5,8 +5,8 @@ class Book extends Component {
     
     render(){
 
-        // this creates a book for each item in the various shelves
-        // the books props here is from PageBody.js where each book is assigned a shelf
+        // This creates a book for each item in the various shelves.
+        // The books props here is from PageBody.js where each book is assigned a shelf
         const{books, moveBook} = this.props
     
         return (
