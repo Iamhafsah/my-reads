@@ -3,6 +3,7 @@ import BookSection from './BookSection.js'
 
 
 class PageBody extends Component {
+  
   render(){
     const bookList = this.props.bookList
     const currentlyReading = bookList.filter(book => book.shelf === 'currentlyReading');

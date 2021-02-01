@@ -1,6 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom' ;
-import * as BooksAPI from './BooksAPI'
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";import * as BooksAPI from './BooksAPI'
 import SearchPage from './SearchPage'
 import PageBody from './PageBody'
 import './App.css'
@@ -49,21 +48,25 @@ class BooksApp extends React.Component {
 
   render() {
     return (
-      <div className="app">
-        <Route exact path='/' >
-          <PageBody
-            bookList={this.state.bookList}
-            moveBook={this.moveBook}
-          />
-        </Route>
-        
-        <Route  path='/search' >
-          <SearchPage 
-            moveBook={this.moveBook}
-            bookList={this.state.bookList}
-          />
-        </Route>
-      </div>
+        <Router>
+          <Switch>
+            <div className="app">
+              <Route exact path='/' >
+                <PageBody
+                  bookList={this.state.bookList}
+                  moveBook={this.moveBook}
+                />
+              </Route>
+              
+              <Route  path='/search' >
+                <SearchPage 
+                  moveBook={this.moveBook}
+                  bookList={this.state.bookList}
+                />
+              </Route>
+            </div>
+          </Switch>
+        </Router>
     )
   }
 }
