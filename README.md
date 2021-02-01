@@ -11,3 +11,6 @@ To get started with it:
 run npm install to install the dependencies.
 
 run npm start.
+
+
+Live version available here: https://my-reads-library.netlify.app/
